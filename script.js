@@ -20,7 +20,7 @@ function handleScroll() {
     if (rect.top < fadeOutPoint) {
       const progress = rect.top / fadeOutPoint;
       el.style.opacity = Math.max(0, progress);
-      el.style.transform = `translateY(${(1 - progress) * -10}px)`;
+      el.style.transform = `translateY(${(1 - progress) * -2}px)`;
     } else {
       el.style.opacity = 1;
       el.style.transform = 'translateY(0)';
