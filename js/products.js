@@ -23,7 +23,7 @@ window.PRODUCTS = [
       <p>Peptide Plug products are supplied strictly for laboratory research and educational purposes only. They are not approved for human or veterinary use. These compounds are not intended to diagnose, treat, cure, or prevent any disease. Use must comply with all applicable laws and regulations.</p>
     `,
     strength: "50mg",
-    category: "Research Peptide",
+    category: "peptides",
     availability: "In Stock"
   },
   {
@@ -70,7 +70,7 @@ window.PRODUCTS = [
   <p>Peptide Plug products are supplied strictly for laboratory research and educational purposes only. They are not approved for human or veterinary use. These compounds are not intended to diagnose, treat, cure, or prevent any disease. Use must comply with all applicable laws and regulations.</p>
 `,
     strength: "10mg",
-    category: "Research Peptide",
+    category: "peptides",
     availability: "In Stock"
   }
 ];
