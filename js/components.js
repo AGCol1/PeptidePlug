@@ -92,3 +92,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
   categoryNav.innerHTML = navHTML;
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const supportToggle = document.getElementById("supportToggle");
+  const supportPanel = document.getElementById("supportPanel");
+  const supportClose = document.getElementById("supportClose");
+  const supportForm = document.getElementById("supportForm");
+  const supportStatus = document.getElementById("supportStatus");
+
+  if (!supportToggle || !supportPanel || !supportClose || !supportForm || !supportStatus) {
+    return;
+  }
+
+  supportToggle.addEventListener("click", () => {
+    supportPanel.classList.add("open");
+  });
+
+  supportClose.addEventListener("click", () => {
+    supportPanel.classList.remove("open");
+  });
+
+  document.addEventListener("click", (e) => {
+    const clickedInsideWidget = document.getElementById("supportWidget")?.contains(e.target);
+
+    if (!clickedInsideWidget) {
+      supportPanel.classList.remove("open");
+    }
+  });
+
+  supportForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(supportForm);
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+      page: window.location.pathname + window.location.search
+    };
+
+    supportStatus.textContent = "Sending...";
+
+    try {
+      const response = await fetch("/support.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        supportStatus.textContent = "Message sent successfully.";
+        supportForm.reset();
+        setTimeout(() => {
+          supportPanel.classList.remove("open");
+          supportStatus.textContent = "";
+        }, 1500);
+      } else {
+        supportStatus.textContent = result.message || "Something went wrong.";
+      }
+    } catch (error) {
+      supportStatus.textContent = "Network error. Please try again.";
+    }
+  });
+});

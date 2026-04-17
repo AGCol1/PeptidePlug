@@ -633,3 +633,129 @@ body.has-announcement .top-banner {
     min-width: 180px;
   }
 }
+
+
+#supportWidget {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 9999;
+}
+
+#supportToggle {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#supportToggle:hover {
+  transform: translateY(-2px);
+}
+
+#supportPanel {
+  position: absolute;
+  right: 0;
+  bottom: 60px;
+  width: 320px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  padding: 18px;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#supportPanel.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#supportClose {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: #111;
+}
+
+#supportForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#supportForm h3 {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+  color: #111;
+}
+
+#supportForm input,
+#supportForm textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#supportForm textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+#supportForm button[type="submit"] {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 12px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+#supportForm button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+#supportStatus {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #111;
+}
+
+@media (max-width: 480px) {
+  #supportWidget {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  #supportPanel {
+    width: min(320px, calc(100vw - 24px));
+    right: 0;
+    bottom: 56px;
+  }
+
+  #supportToggle {
+    padding: 11px 16px;
+    font-size: 13px;
+  }
+}

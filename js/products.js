@@ -72,5 +72,55 @@ window.PRODUCTS = [
     strength: "10mg",
     category: "peptides",
     availability: "In Stock"
+  },
+  {
+    slug: "starter-pack",
+    name: "Starter Pack",
+    price: "£35.00",
+    image: "../assets/images/peptide1.png",
+    variantId: "111111111111",
+    description: `
+  <h3>Peptide Starter Pack</h3>`,
+    strength: "N/A",
+    category: "lab-supplies",
+    availability: "In Stock"
+  },
+  {
+    slug: "bac-water-3ml",
+    name: "Bac Water 3ml",
+    price: "£3.95",
+    image: "../assets/images/peptide1.png",
+    variantId: "111111111111",
+    description: `
+  <h3>Bacteriostatic Water 3ml</h3>`,
+    strength: "N/A",
+    category: "lab-supplies",
+    availability: "In Stock"
+
+  },
+  {
+    slug: "bac-water-10ml",
+    name: "Bac Water 10ml",
+    price: "£6.00",
+    image: "../assets/images/peptide1.png",
+    variantId: "111111111111",
+    description: `
+  <h3>Bacteriostatic Water 10ml</h3>`,
+    strength: "N/A",
+    category: "lab-supplies",
+    availability: "In Stock"
+
+  },
+  {
+    slug: "alcohol-wipes",
+    name: "Alcohol Wipes",
+    price: "£4.00",
+    image: "../assets/images/peptide1.png",
+    variantId: "111111111111",
+    description: `
+  <h3>Alcohol Wipes</h3>`,
+    strength: "N/A",
+    category: "lab-supplies",
+    availability: "In Stock"
   }
 ];
