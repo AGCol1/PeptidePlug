@@ -4,76 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peptide Plug</title>
+  <link rel="icon" type="image/png" href="assets/images/pepbanner.png">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="has-announcement">
+
+  <div class="announcement-bar">
+    Free UK shipping on orders over £100
+  </div>
 
   <section class="banner-wrap">
-    <img src="pepbanner.png" alt="Peptide Plug Banner" class="top-banner" id="topBanner">
+    <img src="assets/images/pepbanner.png" alt="Peptide Plug Banner" class="top-banner" id="topBanner">
   </section>
 
-  <section class="hero fade-in">
+  <section class="hero fade-in active">
     <div class="hero-text">
-      <h2>Advanced Peptide Solutions</h2>
-      <p>Premium quality research peptides</p>
-      <a href="/shop/" class="btn">Shop Now</a>
+      <h2>Premium Research Peptides</h2>
+      <p>Browse our range, view product details, and order through our Shopify checkout.</p>
+      <div class="buttons">
+        <a href="shop/index.html" class="btn">Browse Products</a>
+        <a href="mailto:support@peptideplug.co.uk" class="btn secondary">Get Support</a>
+      </div>
     </div>
 
     <div class="hero-img">
-      <img src="peptide1.png" alt="Research peptides">
+      <img src="assets/images/peptide1.png" alt="Research peptides">
     </div>
   </section>
 
-  <section class="section fade-in">
-    <div class="text-box">
-      <h2>About Our Products</h2>
-      <p>[Insert content here]</p>
-      <a href="/shop/" class="btn">Shop Now</a>
+  <section class="section fade-in active" style="display:block;">
+    <div class="text-box" style="max-width:1200px; margin:0 auto 24px;">
+      <h2>Trending Products</h2>
+      <p>Some of the most viewed products on the site right now.</p>
     </div>
 
-    <div class="image-box">
-      <img src="peptide1.png" alt="Peptide product image">
-    </div>
-  </section>
-
-  <section class="section reverse fade-in">
-    <div class="image-box">
-      <img src="peptide1.png" alt="Peptide quality research image">
-    </div>
-
-    <div class="text-box">
-      <h2>Quality & Research</h2>
-      <p>[Insert content here]</p>
-      <a href="/shop/" class="btn">Shop Now</a>
-    </div>
-  </section>
-
-  <section class="cards">
-    <div class="card fade-in">
-      <div class="image-box small">
-        <img src="peptide1.png" alt="Product category image">
+    <div class="cards" style="padding-top: 0;">
+      <div class="card fade-in active">
+        <div class="image-box small">
+          <img src="assets/images/peptide1.png" alt="GHK-Cu 100mg">
+        </div>
+        <h3>GHK-Cu 100mg</h3>
+        <p>Popular research peptide with a dedicated product page.</p>
+        <a href="shop/product.html?slug=ghk-cu-100mg" class="btn">View Product</a>
       </div>
-      <h3>Product Category</h3>
-      <p>[Insert text]</p>
-      <a href="/shop/" class="btn">Shop Now</a>
-    </div>
 
-    <div class="card fade-in">
-      <div class="image-box small">
-        <img src="peptide1.png" alt="Product category image">
+      <div class="card fade-in active">
+        <div class="image-box small">
+          <img src="assets/images/peptide1.png" alt="MT-2 10mg">
+        </div>
+        <h3>MT-2 10mg</h3>
+        <p>Quick access to product details, basket, and checkout.</p>
+        <a href="shop/product.html?slug=mt2-10mg" class="btn">View Product</a>
       </div>
-      <h3>Product Category</h3>
-      <p>[Insert text]</p>
-      <a href="/shop/" class="btn">Shop Now</a>
-    </div>
 
-    <div class="card fade-in">
-      <div class="image-box small">
-        <img src="peptide1.png" alt="Product category image">
+      <div class="card fade-in active">
+        <div class="image-box small">
+          <img src="assets/images/peptide1.png" alt="Retatrutide 20mg">
+        </div>
+        <h3>Retatrutide 20mg</h3>
+        <p>High-interest product with direct Shopify basket support.</p>
+        <a href="shop/product.html?slug=retatrutide-20mg" class="btn">View Product</a>
       </div>
-      <h3>Product Category</h3>
-      <p>[Insert text]</p>
-      <a href="/shop/" class="btn">Shop Now</a>
     </div>
   </section>
 

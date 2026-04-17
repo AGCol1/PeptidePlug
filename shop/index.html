@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop - Peptide Plug</title>
+  <link rel="icon" type="image/png" href="assets/images/pepbanner.png">
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
   <section class="banner-wrap">
-    <img src="../pepbanner.png" alt="Peptide Plug Banner" class="top-banner" id="topBanner">
+    <img src="../assets/images/pepbanner.png" alt="Peptide Plug Banner" class="top-banner" id="topBanner">
   </section>
 
   <section class="hero small fade-in shop-hero">
@@ -25,77 +26,10 @@
     <p>© 2026 Peptide Plug</p>
   </footer>
 
-  <script>
-    const products = [
-      {
-        name: "GHK-Cu 100mg",
-        description: "£55.00",
-        image: "../peptide1.png",
-        buyLink: "#",
-        readMoreLink: "#"
-      },
-      {
-        name: "MT-2 10mg",
-        description: "£25.00",
-        image: "../peptide1.png",
-        buyLink: "#",
-        readMoreLink: "#"
-      },
-      {
-        name: "Retatrutide 20mg",
-        description: "£120.00",
-        image: "../peptide1.png",
-        buyLink: "#",
-        readMoreLink: "#"
-      },
-      {
-        name: "KPV 10mg",
-        description: "£40.00",
-        image: "../peptide1.png",
-        buyLink: "#",
-        readMoreLink: "#"
-      },
-      {
-        name: "BPC-157 5mg",
-        description: "£16.50",
-        image: "../peptide1.png",
-        buyLink: "#",
-        readMoreLink: "#"
-      },
-      {
-        name: "Epithalon 10mg",
-        description: "£20.00",
-        image: "../peptide1.png",
-        buyLink: "#",
-        readMoreLink: "#"
-      }
-    ];
-
-    const productGrid = document.getElementById("productGrid");
-
-    function createProductCard(product) {
-      return `
-        <div class="product fade-in">
-          <div class="image-box small">
-            <img src="${product.image}" alt="${product.name}">
-          </div>
-          <h3>${product.name}</h3>
-          <p>${product.description}</p>
-          <div class="buttons">
-            <a href="${product.buyLink}" class="btn">Buy Now</a>
-            <a href="${product.readMoreLink}" class="btn secondary">Read More</a>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderProducts() {
-      productGrid.innerHTML = products.map(createProductCard).join("");
-    }
-
-    renderProducts();
-  </script>
-
+  <script src="../js/site-config.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/shop.js"></script>
   <script src="../script.js"></script>
 </body>
 </html>
