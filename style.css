@@ -461,3 +461,64 @@ body.has-announcement .top-banner {
 .product-description strong {
   color: #000000;
 }
+
+@media (max-width: 700px) {
+  .product-page {
+    gap: 18px;
+    margin: 20px auto 40px;
+    padding: 0 16px;
+  }
+
+  .product-image-wrap {
+    padding: 14px;
+  }
+
+  .product-image-wrap img {
+    width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+  }
+
+  .product-info {
+    padding: 18px;
+  }
+
+  .product-info h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+  }
+
+  .product-description-content {
+    -webkit-line-clamp: 3;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .product-description h3 {
+    font-size: 1rem;
+    margin: 14px 0 8px;
+  }
+
+  .product-description p {
+    margin-bottom: 10px;
+  }
+
+  .product-meta p {
+    font-size: 0.95rem;
+  }
+
+  .product-info .buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .product-info .buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
