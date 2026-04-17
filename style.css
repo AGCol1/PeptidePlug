@@ -488,7 +488,7 @@ body.has-announcement .top-banner {
 
   .product-image-wrap img {
     width: 100%;
-    max-height: 280px;
+    max-height: 120px;
     object-fit: contain;
   }
 
