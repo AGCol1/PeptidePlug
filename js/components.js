@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const categoryOrder = [
     { key: "peptides", label: "Peptides", dropdown: true },
     { key: "bundles", label: "Bundles & Blends", dropdown: true },
-    { key: "nasal-sprays", label: "Nasal Sprays", dropdown: true },
     { key: "lab-supplies", label: "Lab Supplies", dropdown: true }
   ];
 

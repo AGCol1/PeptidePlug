@@ -1,28 +1,13 @@
 window.PRODUCTS = [
   {
-    slug: "ghk-cu-50mg",
-    name: "GHK-Cu 50mg",
-    price: "£40.00",
+    slug: "ghk-cu-100mg",
+    name: "GHK-Cu 100mg",
+    price: "£00.00",
     image: "../assets/images/peptide1.png",
-    variantId: "53691250901319",
+    variantId: "111111111111", // MISSING ID 
     description: `
-      <p>GHK-Cu 50mg is a high-purity copper peptide supplied as a lyophilised solid for stability. Verified at &gt;99.1% purity, HPLC-tested, with full COA provided, it is studied in models of skin regeneration, anti-inflammatory activity, and neuroprotective effects. Intended strictly for research use only.</p>
-
-      <h3>Research Applications of GHK-Cu</h3>
-
-      <p><strong>Skin Regeneration and Wound Healing:</strong> Studied for stimulating collagen and elastin production, fibroblast activity, and wound closure in skin repair models.</p>
-
-      <p><strong>Anti-Inflammatory Action:</strong> Research suggests GHK-Cu may reduce inflammatory markers such as IL-6 and TNF-α, with potential applications in damaged tissue and oxidative stress models.</p>
-
-      <p><strong>Neuroprotective Effects:</strong> Explored for its potential to support nerve regeneration, angiogenesis in brain tissue, and gene expression patterns linked to repair and aging.</p>
-
-      <p>Scientific references are available on request or in our research archive.</p>
-
-      <h3>Legal and Safety Information</h3>
-
-      <p>Peptide Plug products are supplied strictly for laboratory research and educational purposes only. They are not approved for human or veterinary use. These compounds are not intended to diagnose, treat, cure, or prevent any disease. Use must comply with all applicable laws and regulations.</p>
-    `,
-    strength: "50mg",
+      <p>GHK-Cu 100mg</p>`,
+    strength: "100mg",
     category: "peptides",
     availability: "In Stock"
   },
@@ -74,11 +59,77 @@ window.PRODUCTS = [
     availability: "In Stock"
   },
   {
+    slug: "retatrutide-10mg",
+    name: "Retatrutide 10mg",
+    price: "£00.00",
+    image: "../assets/images/peptide1.png",
+    variantId: "111111111111", // MISING ID
+    description: `
+      <p>GHK-Cu 50mg is a high-purity copper peptide supplied as a lyophilised solid for stability. Verified at &gt;99.1% purity, HPLC-tested, with full COA provided, it is studied in models of skin regeneration, anti-inflammatory activity, and neuroprotective effects. Intended strictly for research use only.</p>
+
+      <h3>Research Applications of GHK-Cu</h3>
+
+      <p><strong>Skin Regeneration and Wound Healing:</strong> Studied for stimulating collagen and elastin production, fibroblast activity, and wound closure in skin repair models.</p>
+
+      <p><strong>Anti-Inflammatory Action:</strong> Research suggests GHK-Cu may reduce inflammatory markers such as IL-6 and TNF-α, with potential applications in damaged tissue and oxidative stress models.</p>
+
+      <p><strong>Neuroprotective Effects:</strong> Explored for its potential to support nerve regeneration, angiogenesis in brain tissue, and gene expression patterns linked to repair and aging.</p>
+
+      <p>Scientific references are available on request or in our research archive.</p>
+
+      <h3>Legal and Safety Information</h3>
+
+      <p>Peptide Plug products are supplied strictly for laboratory research and educational purposes only. They are not approved for human or veterinary use. These compounds are not intended to diagnose, treat, cure, or prevent any disease. Use must comply with all applicable laws and regulations.</p>
+    `,
+    strength: "50mg",
+    category: "peptides",
+    availability: "In Stock"
+  },
+  {
+    slug: "ghk-cu-50mg",
+    name: "GHK-Cu 50mg",
+    price: "£40.00",
+    image: "../assets/images/peptide1.png",
+    variantId: "53691250901319",
+    description: `
+      <p>GHK-Cu 50mg is a high-purity copper peptide supplied as a lyophilised solid for stability. Verified at &gt;99.1% purity, HPLC-tested, with full COA provided, it is studied in models of skin regeneration, anti-inflammatory activity, and neuroprotective effects. Intended strictly for research use only.</p>
+
+      <h3>Research Applications of GHK-Cu</h3>
+
+      <p><strong>Skin Regeneration and Wound Healing:</strong> Studied for stimulating collagen and elastin production, fibroblast activity, and wound closure in skin repair models.</p>
+
+      <p><strong>Anti-Inflammatory Action:</strong> Research suggests GHK-Cu may reduce inflammatory markers such as IL-6 and TNF-α, with potential applications in damaged tissue and oxidative stress models.</p>
+
+      <p><strong>Neuroprotective Effects:</strong> Explored for its potential to support nerve regeneration, angiogenesis in brain tissue, and gene expression patterns linked to repair and aging.</p>
+
+      <p>Scientific references are available on request or in our research archive.</p>
+
+      <h3>Legal and Safety Information</h3>
+
+      <p>Peptide Plug products are supplied strictly for laboratory research and educational purposes only. They are not approved for human or veterinary use. These compounds are not intended to diagnose, treat, cure, or prevent any disease. Use must comply with all applicable laws and regulations.</p>
+    `,
+    strength: "50mg",
+    category: "peptides",
+    availability: "In Stock"
+  },
+  {
+    slug: "cjc-1295-dac",
+    name: "CJC-1295 incl. DAC",
+    price: "£00.00",
+    image: "../assets/images/peptide1.png",
+    variantId: "1111111111", // MISSING ID
+    description: `
+      <p>CJC-1295 incl. DAC is a high-purity growth hormone-releasing factor supplied as a lyophilised solid for stability. Verified at &gt;99.1% purity, HPLC-tested, with full COA provided, it is studied in models of growth hormone stimulation and metabolic regulation. Intended strictly for research use only.</p>`,
+    strength: "50mg",
+    category: "peptides",
+    availability: "In Stock"
+  },
+  {
     slug: "starter-pack",
     name: "Starter Pack",
     price: "£35.00",
     image: "../assets/images/peptide1.png",
-    variantId: "111111111111",
+    variantId: "111111111111", // MISSING ID 
     description: `
   <h3>Peptide Starter Pack</h3>`,
     strength: "N/A",
@@ -90,7 +141,7 @@ window.PRODUCTS = [
     name: "Bac Water 3ml",
     price: "£3.95",
     image: "../assets/images/peptide1.png",
-    variantId: "111111111111",
+    variantId: "111111111111", // MISSING ID 
     description: `
   <h3>Bacteriostatic Water 3ml</h3>`,
     strength: "N/A",
@@ -103,7 +154,7 @@ window.PRODUCTS = [
     name: "Bac Water 10ml",
     price: "£6.00",
     image: "../assets/images/peptide1.png",
-    variantId: "111111111111",
+    variantId: "111111111111", // MISSING ID 
     description: `
   <h3>Bacteriostatic Water 10ml</h3>`,
     strength: "N/A",
@@ -112,11 +163,23 @@ window.PRODUCTS = [
 
   },
   {
+    slug: "needles-100-pack",
+    name: "Needles 100 Pack",
+    price: "£00.00",
+    image: "../assets/images/peptide1.png",
+    variantId: "111111111111", // MISSING ID
+    description: `
+  <h3>Needles 100 Pack</h3>`,
+    strength: "N/A",
+    category: "lab-supplies",
+    availability: "In Stock"
+  },
+  {
     slug: "alcohol-wipes",
-    name: "Alcohol Wipes",
+    name: "Alcohol Wipes (100 Pack)",
     price: "£4.00",
     image: "../assets/images/peptide1.png",
-    variantId: "111111111111",
+    variantId: "111111111111", // MISSING ID
     description: `
   <h3>Alcohol Wipes</h3>`,
     strength: "N/A",
