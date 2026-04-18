@@ -171,17 +171,17 @@ body {
 /* SHOP */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
   padding: 40px 8% 80px;
 }
 
 .product {
   background: #f8f8f8;
-  padding: 20px;
-  border-radius: 14px;
+  padding: 16px;
+  border-radius: 12px;
   color: #111827;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
   border: 1px solid #eeeeee;
 }
 
@@ -199,6 +199,13 @@ body {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.product img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  display: block;
 }
 
 /* BUTTONS */

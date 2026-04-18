@@ -3,7 +3,7 @@ window.PRODUCTS = [
     slug: "ghk-cu-100mg",
     name: "GHK-Cu 100mg",
     price: "£45.99",
-    image: "../assets/images/peptide1.png",
+    image: "../assets/images/ghk-cu-100mg.png",
     variantId: "53731327246663",
     description: `
     <p><strong>GHK-Cu (Copper Tripeptide-1)</strong> is a well-characterised peptide-copper complex originally identified in human plasma. It is widely examined in laboratory research for its relevance to biological signalling pathways associated with cellular processes and tissue models.</p>
@@ -200,7 +200,7 @@ window.PRODUCTS = [
     slug: "cjc-1295-dac",
     name: "CJC-1295 incl. DAC 5mg",
     price: "£40.00",
-    image: "../assets/images/peptide1.png",
+    image: "../assets/images/cjc-1295.png",
     variantId: "53731334422855",
     description: `
   <p><strong>CJC-1295 DAC</strong> is a synthetic peptide analogue developed for use in controlled laboratory research. It incorporates a Drug Affinity Complex (DAC) to extend stability and duration within experimental models, making it relevant for advanced pharmacokinetic and endocrine-related studies.</p>
@@ -555,7 +555,7 @@ window.PRODUCTS = [
   <p>All handling, storage, and use must comply with standard laboratory safety procedures and applicable regulations.</p>`,
     strength: "5mg",
     category: "peptides",
-    availability: false
+    availability: false 
   },
   {
     slug: "bpc-157-10mg",

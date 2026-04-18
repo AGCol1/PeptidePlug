@@ -16,35 +16,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function createProductCard(product) {
-      const isOutOfStock = product.availability === false || product.availability === "false";
-  const availabilityText = isOutOfStock ? "Out of Stock" : "In Stock";
+    const isOutOfStock = product.availability === false || product.availability === "false";
+    const availabilityText = isOutOfStock ? "Out of Stock" : "In Stock";
 
     return `
-      <div class="product fade-in active ${isOutOfStock ? "out-of-stock" : ""}">
-        <div class="image-box small">
-          <img src="${product.image}" alt="${product.name}">
-        </div>
-        <h3>${product.name}</h3>
-        <p>${product.price}</p>
-        <p class="availability ${isOutOfStock ? "out" : "in"}">${product.availability}</p>
-        <div class="buttons">
-          <a
-            href="${isOutOfStock ? "#" : `product.html?slug=${product.slug}`}"
-            class="btn ${isOutOfStock ? "disabled" : ""}"
-            ${isOutOfStock ? 'onclick="return false;" aria-disabled="true"' : ""}
-          >
-            Buy Now
-          </a>
-          <a
-            href="${isOutOfStock ? "#" : getAddToCartLink(product.variantId)}"
-            class="btn secondary ${isOutOfStock ? "disabled" : ""}"
-            ${isOutOfStock ? 'onclick="return false;" aria-disabled="true"' : ""}
-          >
-            Add to Basket
-          </a>
-        </div>
+    <div class="product fade-in active ${isOutOfStock ? "out-of-stock" : ""}">
+      <div class="image-box small">
+        <img src="${product.image}" alt="${product.name}">
       </div>
-    `;
+      <h3>${product.name}</h3>
+      <p>${product.price}</p>
+      <p class="availability ${isOutOfStock ? "out" : "in"}">${availabilityText}</p>
+      <div class="buttons">
+        <a
+          href="${isOutOfStock ? "#" : `product.html?slug=${product.slug}`}"
+          class="btn ${isOutOfStock ? "disabled" : ""}"
+          ${isOutOfStock ? 'onclick="return false;" aria-disabled="true"' : ""}
+        >
+          Buy Now
+        </a>
+        <a
+          href="${isOutOfStock ? "#" : getAddToCartLink(product.variantId)}"
+          class="btn secondary ${isOutOfStock ? "disabled" : ""}"
+          ${isOutOfStock ? 'onclick="return false;" aria-disabled="true"' : ""}
+        >
+          Add to Basket
+        </a>
+      </div>
+    </div>
+  `;
   }
 
   productGrid.innerHTML = window.PRODUCTS.map(createProductCard).join("");
