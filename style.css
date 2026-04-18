@@ -759,3 +759,26 @@ body.has-announcement .top-banner {
     font-size: 13px;
   }
 }
+
+.btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.availability.in {
+  color: green;
+}
+
+.availability.out {
+  color: red;
+}
+
+.nav-support-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}

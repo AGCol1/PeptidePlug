@@ -32,6 +32,8 @@ function renderProductPage() {
     return;
   }
 
+  const isOutOfStock = product.availability === "Out of Stock";
+
   document.title = `${product.name} - Peptide Plug`;
 
   productPage.innerHTML = `
@@ -55,12 +57,21 @@ function renderProductPage() {
       <div class="product-meta">
         <p><strong>Strength:</strong> ${product.strength}</p>
         <p><strong>Category:</strong> ${product.category}</p>
-        <p><strong>Availability:</strong> ${product.availability}</p>
+        <p><strong>Availability:</strong> <span class="${isOutOfStock ? "stock-out" : "stock-in"}">${product.availability}</span></p>
       </div>
 
       <div class="buttons">
-        <a href="${getAddToCartLink(product.variantId)}" class="btn">Add to Basket</a>
-        <a href="${getAddToCartLink(product.variantId)}" class="btn secondary">Checkout Now</a>
+        ${
+          isOutOfStock
+            ? `
+              <button class="btn disabled" disabled aria-disabled="true">Out of Stock</button>
+              <button class="btn secondary disabled" disabled aria-disabled="true">Unavailable</button>
+            `
+            : `
+              <a href="${getAddToCartLink(product.variantId)}" class="btn">Add to Basket</a>
+              <a href="${getAddToCartLink(product.variantId)}" class="btn secondary">Checkout Now</a>
+            `
+        }
       </div>
     </div>
   `;

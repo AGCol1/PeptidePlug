@@ -16,16 +16,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function createProductCard(product) {
+    const isOutOfStock = product.availability === "Out of Stock";
+
     return `
-      <div class="product fade-in active">
+      <div class="product fade-in active ${isOutOfStock ? "out-of-stock" : ""}">
         <div class="image-box small">
           <img src="${product.image}" alt="${product.name}">
         </div>
         <h3>${product.name}</h3>
         <p>${product.price}</p>
+        <p class="availability ${isOutOfStock ? "out" : "in"}">${product.availability}</p>
         <div class="buttons">
-          <a href="product.html?slug=${product.slug}" class="btn">Buy Now</a>
-          <a href="${getAddToCartLink(product.variantId)}" class="btn secondary">Add to Basket</a>
+          <a
+            href="${isOutOfStock ? "#" : `product.html?slug=${product.slug}`}"
+            class="btn ${isOutOfStock ? "disabled" : ""}"
+            ${isOutOfStock ? 'onclick="return false;" aria-disabled="true"' : ""}
+          >
+            Buy Now
+          </a>
+          <a
+            href="${isOutOfStock ? "#" : getAddToCartLink(product.variantId)}"
+            class="btn secondary ${isOutOfStock ? "disabled" : ""}"
+            ${isOutOfStock ? 'onclick="return false;" aria-disabled="true"' : ""}
+          >
+            Add to Basket
+          </a>
         </div>
       </div>
     `;

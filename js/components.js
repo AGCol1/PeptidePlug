@@ -36,8 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const staticLinks = [
-    { label: "All Products", href: getShopLink() },
-    { label: "Reconstitution Guide", href: "/reconstitution-guide.html" }
+    { label: "All Products", href: getShopLink() }
   ];
 
   const categoryOrder = [
@@ -87,9 +86,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  navHTML += `<a href="${staticLinks[1].href}">${staticLinks[1].label}</a>`;
+  navHTML += `<button class="nav-support-btn" type="button" id="navSupportBtn">Get Support</button>`;
 
   categoryNav.innerHTML = navHTML;
+
+  const navSupportBtn = document.getElementById("navSupportBtn");
+  const supportPanel = document.getElementById("supportPanel");
+
+  if (navSupportBtn && supportPanel) {
+    navSupportBtn.addEventListener("click", () => {
+      supportPanel.classList.add("open");
+    });
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -113,8 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("click", (e) => {
     const clickedInsideWidget = document.getElementById("supportWidget")?.contains(e.target);
+    const clickedNavSupport = document.getElementById("navSupportBtn")?.contains(e.target);
 
-    if (!clickedInsideWidget) {
+    if (!clickedInsideWidget && !clickedNavSupport) {
       supportPanel.classList.remove("open");
     }
   });
