@@ -63,11 +63,9 @@ function renderProductPage() {
         ${isOutOfStock
       ? `
               <button class="btn disabled" disabled aria-disabled="true">Out of Stock</button>
-              <button class="btn secondary disabled" disabled aria-disabled="true">Unavailable</button>
             `
       : `
-              <a href="${getAddToCartLink(product.variantId)}" class="btn">Add to Basket</a>
-              <a href="${getAddToCartLink(product.variantId)}" class="btn secondary">Checkout Now</a>
+              <a href="${getAddToCartLink(product.variantId)}" class="btn">Go to Checkout</a>
             `
     }
       </div>

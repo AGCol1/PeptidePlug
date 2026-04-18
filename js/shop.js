@@ -35,13 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         >
           Buy Now
         </a>
-        <a
-          href="${isOutOfStock ? "#" : getAddToCartLink(product.variantId)}"
-          class="btn secondary ${isOutOfStock ? "disabled" : ""}"
-          ${isOutOfStock ? 'onclick="return false;" aria-disabled="true"' : ""}
-        >
-          Add to Basket
-        </a>
       </div>
     </div>
   `;
