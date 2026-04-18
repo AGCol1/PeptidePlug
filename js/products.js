@@ -560,7 +560,7 @@ window.PRODUCTS = [
   {
     slug: "bpc-157-10mg",
     name: "BPC-157 10mg",
-    price: "£00.00",
+    price: "£34.99",
     image: "../assets/images/peptide1.png",
     variantId: "53731363946823",
     description: `
