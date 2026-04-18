@@ -48,7 +48,7 @@ window.PRODUCTS = [
     <p>All handling, storage, and use must comply with standard laboratory safety procedures and applicable regulations.</p>`,
     strength: "100mg",
     category: "peptides",
-    availability: "In Stock"
+    availability: true
   },
   {
     slug: "mt2-10mg",
@@ -95,7 +95,7 @@ window.PRODUCTS = [
 `,
     strength: "10mg",
     category: "peptides",
-    availability: "In Stock"
+    availability: true
   },
   {
     slug: "retatrutide-10mg",
@@ -143,7 +143,7 @@ window.PRODUCTS = [
   <p>All handling, storage, and use must comply with standard laboratory safety procedures and applicable regulations.</p>`,
     strength: "50mg",
     category: "peptides",
-    availability: "In Stock"
+    availability: true
   },
   {
     slug: "ghk-cu-50mg",
@@ -194,7 +194,7 @@ window.PRODUCTS = [
   <p>All handling, storage, and use must comply with standard laboratory safety procedures and applicable regulations.</p>`,
     strength: "50mg",
     category: "peptides",
-    availability: "In Stock"
+    availability: true
   },
   {
     slug: "cjc-1295-dac",
@@ -245,7 +245,7 @@ window.PRODUCTS = [
   <p>All handling, storage, and use must comply with standard laboratory safety procedures and applicable regulations.</p>`,
     strength: "5mg",
     category: "peptides",
-    availability: "In Stock"
+    availability: true
   },
   {
     slug: "starter-pack",
@@ -282,7 +282,7 @@ window.PRODUCTS = [
   <p>This product is supplied for research and educational purposes only. Proper handling, storage, and usage practices should always be followed.</p>`,
     strength: "N/A",
     category: "lab-supplies",
-    availability: "In Stock"
+    availability: true
   },
   {
     slug: "bac-water-3ml",
@@ -315,7 +315,7 @@ window.PRODUCTS = [
   <p>For research and educational purposes only. Not intended for human consumption. Always store in a cool, dry place and follow appropriate handling procedures.</p>`,
     strength: "N/A",
     category: "lab-supplies",
-    availability: "In Stock"
+    availability: true
 
   },
   {
@@ -349,7 +349,7 @@ window.PRODUCTS = [
   <p>For research and educational purposes only. Not intended for human consumption. Always store in a cool, dry place and follow appropriate handling procedures.</p>`,
     strength: "N/A",
     category: "lab-supplies",
-    availability: "In Stock"
+    availability: true
 
   },
   {
@@ -381,7 +381,7 @@ window.PRODUCTS = [
   </ul>`,
     strength: "N/A",
     category: "lab-supplies",
-    availability: "In Stock"
+    availability: true
   },
   {
     slug: "alcohol-wipes",
@@ -414,7 +414,7 @@ window.PRODUCTS = [
   <p>For research and educational purposes only. Proper storage, handling, and usage procedures should always be followed.</p>`,
     strength: "N/A",
     category: "lab-supplies",
-    availability: "In Stock"
+    availability: true
   },
   {
     slug: "klow-blend-80mg",
@@ -504,7 +504,7 @@ window.PRODUCTS = [
   <p>All handling, storage, and use must comply with standard laboratory safety procedures and applicable regulations.</p>`,
     strength: "80mg",
     category: "bundles",
-    availability: "Out of Stock"
+    availability: false
   },
   {
     slug: "ipamorelin-5mg",
@@ -555,7 +555,7 @@ window.PRODUCTS = [
   <p>All handling, storage, and use must comply with standard laboratory safety procedures and applicable regulations.</p>`,
     strength: "5mg",
     category: "peptides",
-    availability: "Out of Stock"
+    availability: false
   },
   {
     slug: "bpc-157-10mg",
@@ -606,7 +606,7 @@ window.PRODUCTS = [
   <p>All handling, storage, and use must comply with standard laboratory safety procedures and applicable regulations.</p>`,
     strength: "10mg",
     category: "peptides",
-    availability: "Out of Stock"
+    availability: false
   },
   {
     slug: "bpc-157-5mg",
@@ -648,7 +648,7 @@ window.PRODUCTS = [
   <p>All handling, storage, and use must comply with standard laboratory safety procedures and applicable regulations.</p>`,
     strength: "5mg",
     category: "peptides",
-    availability: "Out of Stock"
+    availability: false
   },
   {
     slug: "glow-blend-70mg",
@@ -729,6 +729,6 @@ window.PRODUCTS = [
   <p>All handling, storage, and use must comply with standard laboratory safety procedures and applicable regulations.</p>`,
     strength: "70mg",
     category: "bundles",
-    availability: "Out of Stock"
+    availability: false
   }
 ];

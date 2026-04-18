@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function createProductCard(product) {
-    const isOutOfStock = product.availability === "Out of Stock";
+    const isOutOfStock = product.availability === false || product.availability === "false";
+    const availabilityText = isOutOfStock ? "Out of Stock" : "In Stock";
 
     return `
       <div class="product fade-in active ${isOutOfStock ? "out-of-stock" : ""}">
@@ -25,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <h3>${product.name}</h3>
         <p>${product.price}</p>
-        <p class="availability ${isOutOfStock ? "out" : "in"}">${product.availability}</p>
+        <p class="availability ${isOutOfStock ? "out" : "in"}">${availabilityText}</p>
         <div class="buttons">
           <a
             href="${isOutOfStock ? "#" : `product.html?slug=${product.slug}`}"
