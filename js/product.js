@@ -38,14 +38,14 @@ function renderProductPage() {
 
   productPage.innerHTML = `
     <div class="product-image-wrap">
-      <img src="${product.image}" alt="${product.name}">
-    </div>
+        <img src="${product.image}" alt="${product.name}">
+      </div>
 
     <div class="product-info">
-      <h1>${product.name}</h1>
-      <p class="product-price">${product.price}</p>
+        <h1>${product.name}</h1>
+        <p class="product-price">${product.price}</p>
 
-      <div class="product-description">
+        <div class="product-description">
         <div class="product-description-content" id="productDescriptionContent">
           ${product.description}
         </div>
