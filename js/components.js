@@ -86,7 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  navHTML += `<button class="nav-support-btn" type="button" id="navSupportBtn">Get Support</button>`;
+  navHTML += `
+    <div class="nav-action-buttons">
+      <button class="nav-support-btn" type="button" id="navSupportBtn">Get Support</button>
+    </div>
+  `;
 
   categoryNav.innerHTML = navHTML;
 
@@ -119,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     supportPanel.classList.remove("open");
   });
 
-  document.addEventListener("click", (e) => {
+  document.addEventListener("click", e => {
     const clickedInsideWidget = document.getElementById("supportWidget")?.contains(e.target);
     const clickedNavSupport = document.getElementById("navSupportBtn")?.contains(e.target);
 
@@ -128,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  supportForm.addEventListener("submit", async (e) => {
+  supportForm.addEventListener("submit", async e => {
     e.preventDefault();
 
     const formData = new FormData(supportForm);

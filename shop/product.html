@@ -19,7 +19,6 @@
     <nav class="category-nav" id="categoryNav"></nav>
   </section>
 
-
   <div class="back-link">
     <a href="/shop/" class="btn secondary">Back to Shop</a>
   </div>
@@ -32,28 +31,29 @@
 
   <script src="/js/site-config.js"></script>
   <script src="/js/products.js"></script>
+  <script src="/js/basket.js"></script>
   <script src="/js/components.js"></script>
   <script src="/js/product.js"></script>
   <script src="/script.js"></script>
-  
+
   <div id="supportWidget">
-  <button id="supportToggle" aria-label="Open support form">Get Support</button>
+    <button id="supportToggle" aria-label="Open support form">Get Support</button>
 
-  <div id="supportPanel">
-    <button id="supportClose" aria-label="Close support form">&times;</button>
+    <div id="supportPanel">
+      <button id="supportClose" aria-label="Close support form">&times;</button>
 
-    <form id="supportForm">
-      <h3>Need help?</h3>
+      <form id="supportForm">
+        <h3>Need help?</h3>
 
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="message" placeholder="What would you like help with?" required></textarea>
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" placeholder="What would you like help with?" required></textarea>
 
-      <button type="submit">Send</button>
-      <p id="supportStatus"></p>
-    </form>
+        <button type="submit">Send</button>
+        <p id="supportStatus"></p>
+      </form>
+    </div>
   </div>
-</div>
 </body>
 
 </html>
