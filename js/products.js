@@ -149,7 +149,7 @@ window.PRODUCTS = [
     slug: "ghk-cu-50mg",
     name: "GHK-Cu 50mg",
     price: "£24.99",
-    image: "../assets/images/ghk-cu-100mg.png",
+    image: "../assets/images/ghk-cu-50mg.png",
     variantId: "53691250901319",
     description: `
   <p><strong>GHK-Cu (Copper Tripeptide-1)</strong> is a well-characterised peptide-copper complex originally identified in human plasma. It is widely examined in laboratory research for its relevance to biological signalling pathways associated with cellular processes and tissue models.</p>
@@ -306,7 +306,26 @@ window.PRODUCTS = [
     name: "Starter Pack - Premium Complete Injection Kit",
     price: "£35.00",
     image: "../assets/images/pepbanner.png",
-    variantId: "53728753254727",
+    images: [
+      "../assets/images/alcohol-wipes-100.png",
+      "../assets/images/needles-100-pack.png",
+      "../assets/images/bac-water-3ml.png",
+      "../assets/images/bac-water-10ml.png",
+
+    ],
+    variantId: "53728753320263",
+    variantOptions: [
+      {
+        label: "10ml Bac Water",
+        variantId: "53728753320263",
+        price: "£35.00"
+      },
+      {
+        label: "3ml Bac Water",
+        variantId: "53728753254727",
+        price: "£35.00"
+      }
+    ],
     description: `
   <p><strong>Starter Pack</strong> is a complete kit designed to provide a simple, organised setup for research and educational use.</p>
 

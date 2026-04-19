@@ -44,7 +44,8 @@ function addToBasket(product, qty = 1) {
       name: product.name,
       price: product.price,
       image: product.image,
-      qty: qty
+      qty: qty,
+      selectedOptionLabel: product.selectedOptionLabel || ""
     });
   }
 
@@ -254,11 +255,16 @@ function renderBasketDrawer() {
   }
 
   basketItemsWrap.innerHTML = basket.map(item => {
+    const selectedOptionHTML = item.selectedOptionLabel
+      ? `<p class="basket-item-option">${item.selectedOptionLabel}</p>`
+      : "";
+
     return `
       <div class="basket-item">
         <img src="${item.image}" alt="${item.name}">
         <div class="basket-item-info">
           <h4>${item.name}</h4>
+          ${selectedOptionHTML}
           <p>${item.price}</p>
           <div class="basket-item-controls">
             <button type="button" class="basket-qty-btn" data-action="decrease" data-variant-id="${item.variantId}">-</button>
