@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ | Peptide Plug</title>
+  <link rel="icon" type="image/png" href="assets/images/pepbanner.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="siteHeader"></div>
+
+  <main class="faq-page">
+    <section class="faq-hero">
+      <div class="faq-container">
+        <span class="faq-eyebrow">Support</span>
+        <h1>Frequently Asked Questions</h1>
+        <p>Find quick answers about ordering, delivery, payments, and general site information.</p>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="faq-container">
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>How long does delivery take?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Delivery times depend on your location and selected shipping option. Full details are shown at checkout.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>How can I track my order?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>If tracking is available for your order, you will receive tracking details after dispatch.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>What payment methods do you accept?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Accepted payment methods are shown during checkout.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>How do I contact support?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>You can contact support using the contact page or the support widget on the site.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Where can I view lab results?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>You can view available lab results from the Lab Test Results page.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script src="components.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const questions = document.querySelectorAll(".faq-question");
+
+      questions.forEach(question => {
+        question.addEventListener("click", () => {
+          const item = question.parentElement;
+          item.classList.toggle("active");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
