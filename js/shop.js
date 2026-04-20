@@ -11,49 +11,30 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  function createProductCard(product) {
-    const isOutOfStock = window.PP_CART.isProductOutOfStock(product);
-    const availabilityText = isOutOfStock ? "Out of Stock" : "In Stock";
+  function getAddToCartLink(variantId) {
+    return `https://${window.SITE_CONFIG.shopifyDomain}/cart/${variantId}:1?channel=buy_button`;
+  }
 
+  function createProductCard(product) {
     return `
-      <div class="product fade-in active ${isOutOfStock ? "out-of-stock" : ""}">
+      <div class="product fade-in active">
         <div class="image-box small">
           <img src="${product.image}" alt="${product.name}">
         </div>
-        <h3>${product.name}</h3>
-        <p>${product.price}</p>
-        <p class="availability ${isOutOfStock ? "out" : "in"}">${availabilityText}</p>
-        <div class="buttons">
-          ${
-            isOutOfStock
-              ? `<button class="btn disabled" disabled aria-disabled="true">Out of Stock</button>`
-              : `
-                <a href="product.html?slug=${product.slug}" class="btn secondary">View Product</a>
-                <button class="btn add-to-basket-btn" type="button" data-slug="${product.slug}">Add to Basket</button>
-              `
-          }
+        <div class="product-card-body">
+          ${product.tag ? `<span class="product-badge">${product.tag}</span>` : ""}
+          <h3>${product.name}</h3>
+          <p>${product.price}</p>
+          <div class="buttons">
+            <a href="product.html?slug=${product.slug}" class="btn">Buy Now</a>
+            <a href="${getAddToCartLink(product.variantId)}" class="btn secondary">Add to Cart</a>
+          </div>
         </div>
       </div>
     `;
   }
 
   productGrid.innerHTML = window.PRODUCTS.map(createProductCard).join("");
-
-  document.querySelectorAll(".add-to-basket-btn").forEach(button => {
-    button.addEventListener("click", () => {
-      const slug = button.getAttribute("data-slug");
-      const product = window.PRODUCTS.find(item => item.slug === slug);
-
-      if (!product) return;
-
-      window.PP_CART.addToBasket(product, 1);
-      button.textContent = "Added";
-
-      setTimeout(() => {
-        button.textContent = "Add to Basket";
-      }, 1200);
-    });
-  });
 
   console.log("Products rendered:", window.PRODUCTS.length);
 });

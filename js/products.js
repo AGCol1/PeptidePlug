@@ -4,6 +4,7 @@ window.PRODUCTS = [
     name: "GHK-Cu 100mg",
     price: "£45.99",
     image: "../assets/images/ghk-cu-100mg.png",
+    tag: "Popular",
     variantId: "53731327246663",
     description: `
     <p><strong>GHK-Cu (Copper Tripeptide-1)</strong> is a well-characterised peptide-copper complex originally identified in human plasma. It is widely examined in laboratory research for its relevance to biological signalling pathways associated with cellular processes and tissue models.</p>
@@ -54,6 +55,7 @@ window.PRODUCTS = [
     slug: "mt2-10mg",
     name: "MT-2 10mg",
     price: "£24.99",
+    tag: "New",
     image: "../assets/images/mt2-10mg.png",
     variantId: "53714091147591",
     description: `
@@ -101,6 +103,7 @@ window.PRODUCTS = [
     slug: "retatrutide-10mg",
     name: "Retatrutide (GLP-3) 10mg",
     price: "£70.00",
+    tag: "Best Seller",
     image: "../assets/images/retatrutide-10mg.png",
     variantId: "53731317973319",
     description: `
@@ -493,6 +496,7 @@ window.PRODUCTS = [
     slug: "klow-blend-80mg",
     name: "Klow Blend (BPC-157, TB-500, KPV, GHK-Cu) 80mg",
     price: "£99.99",
+    tag: "Trending",
     image: "../assets/images/klow-blend-80mg.png",
     variantId: "53731463627079",
     description: `
