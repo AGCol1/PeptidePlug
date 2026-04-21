@@ -1,74 +1,119 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const grid = document.getElementById("categoryProductGrid");
-    if (!grid || !window.PRODUCTS) return;
+  const productGrid = document.getElementById("categoryProductGrid");
 
+  if (!productGrid) {
+    console.log("categoryProductGrid not found");
+    return;
+  }
+
+  if (!window.PRODUCTS || !Array.isArray(window.PRODUCTS)) {
+    console.log("PRODUCTS not loaded");
+    return;
+  }
+
+  function getCurrentCategory() {
     const fileName = window.location.pathname.split("/").pop().toLowerCase();
 
     const pageCategoryMap = {
-        "peptides.html": "peptides",
-        "bundles.html": "bundles",
-        "blends.html": "blends",
-        "lab-supplies.html": "lab-supplies"
+      "peptides.html": "peptides",
+      "bundles.html": "bundles",
+      "lab-supplies.html": "lab-supplies"
     };
 
-    const selectedCategory = pageCategoryMap[fileName];
-    if (!selectedCategory) return;
+    return pageCategoryMap[fileName] || null;
+  }
 
-    const filteredProducts = window.PRODUCTS.filter(product => product.category === selectedCategory);
+  function getProductLink(slug) {
+    return `product.html?slug=${encodeURIComponent(slug)}`;
+  }
 
-    if (!filteredProducts.length) {
-        grid.innerHTML = `<p class="no-products">No products found in this category.</p>`;
-        return;
-    }
+  function createProductCard(product) {
+    const outOfStock =
+      window.PP_CART &&
+      typeof window.PP_CART.isProductOutOfStock === "function"
+        ? window.PP_CART.isProductOutOfStock(product)
+        : false;
 
-    grid.innerHTML = filteredProducts.map(product => `
-    <div class="product fade-in active">
-      <div class="image-box small">
-        <img src="${product.image}" alt="${product.name}">
-      </div>
-      <div class="product-card-body">
-        ${product.tag ? `<span class="product-badge">${product.tag}</span>` : ""}
-        <h3>${product.name}</h3>
-        <p>${product.price}</p>
-        <div class="buttons">
-          <a href="../shop/product.html?slug=${product.slug}" class="btn">View Product</a>
-          <button type="button" class="btn secondary add-to-basket-btn" data-slug="${product.slug}">
-            Add to Basket
-          </button>
+    return `
+      <div class="product fade-in active">
+        <div class="image-box small">
+          <img src="${product.image}" alt="${product.name}">
+        </div>
+
+        <div class="product-card-body">
+          ${product.tag ? `<span class="product-badge">${product.tag}</span>` : ""}
+          <h3>${product.name}</h3>
+          <p>${product.price}</p>
+
+          <div class="buttons">
+            <a href="${getProductLink(product.slug)}" class="btn">Buy Now</a>
+            ${
+              outOfStock
+                ? `<button type="button" class="btn secondary disabled" disabled aria-disabled="true">Out of Stock</button>`
+                : `<button type="button" class="btn secondary add-to-basket-btn" data-slug="${product.slug}">Add to Basket</button>`
+            }
+          </div>
         </div>
       </div>
-    </div>
-  `).join("");
+    `;
+  }
 
-    const addToBasketButtons = grid.querySelectorAll(".add-to-basket-btn");
+  function renderProducts(productsToRender) {
+    productGrid.innerHTML = productsToRender.map(createProductCard).join("");
+    setupAddToBasketButtons();
+  }
 
-    addToBasketButtons.forEach(button => {
-        button.addEventListener("click", event => {
-            const slug = button.getAttribute("data-slug");
-            const product = window.PRODUCTS.find(item => item.slug === slug);
+  function setupAddToBasketButtons() {
+    const buttons = document.querySelectorAll(".add-to-basket-btn");
 
-            if (!product) return;
+    buttons.forEach(button => {
+      button.addEventListener("click", event => {
+        const slug = button.getAttribute("data-slug");
+        const product = window.PRODUCTS.find(item => item.slug === slug);
 
-            let basketProduct = { ...product };
+        if (!product) {
+          console.log("Product not found for slug:", slug);
+          return;
+        }
 
-            if (!basketProduct.variantId && Array.isArray(basketProduct.variantOptions) && basketProduct.variantOptions.length) {
-                basketProduct.variantId = basketProduct.variantOptions[0].variantId;
-                basketProduct.selectedOptionLabel = basketProduct.variantOptions[0].label || "";
-                basketProduct.price = basketProduct.variantOptions[0].price || basketProduct.price;
-            }
+        const basketProduct = {
+          ...product,
+          variantId: product.variantId,
+          price: product.price
+        };
 
-            if (!basketProduct.variantId) {
-                window.location.href = `../product.html?slug=${basketProduct.slug}`;
-                return;
-            }
+        if (window.PP_CART && typeof window.PP_CART.addToBasket === "function") {
+          window.PP_CART.addToBasket(basketProduct, 1);
 
-            if (window.PP_CART && typeof window.PP_CART.addToBasket === "function") {
-                window.PP_CART.addToBasket(basketProduct, 1);
-            }
+          if (typeof window.animateProductToBasket === "function") {
+            window.animateProductToBasket(event.currentTarget, basketProduct.image);
+          }
 
-            if (typeof window.animateProductToBasket === "function") {
-                window.animateProductToBasket(event.currentTarget, basketProduct.image);
-            }
-        });
+          const originalText = button.textContent;
+          button.textContent = "Added";
+          button.disabled = true;
+
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+          }, 1200);
+        } else {
+          console.log("PP_CART is not available");
+        }
+      });
     });
+  }
+
+  const currentCategory = getCurrentCategory();
+
+  if (!currentCategory) {
+    console.log("No matching category for this page");
+    return;
+  }
+
+  const filteredProducts = window.PRODUCTS.filter(product => product.category === currentCategory);
+
+  renderProducts(filteredProducts);
+
+  console.log("Filtered products rendered:", filteredProducts.length);
 });
