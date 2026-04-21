@@ -9,85 +9,99 @@
 </head>
 <body>
 
-  <div id="siteHeader"></div>
+  <section class="banner-wrap">
+    <img src="assets/images/pepbanner.png" alt="Peptide Plug Banner" class="top-banner" id="topBanner">
+  </section>
+
+  <section class="category-nav-wrap">
+    <nav class="category-nav" id="categoryNav"></nav>
+  </section>
 
   <main class="faq-page">
-    <section class="faq-hero">
-      <div class="faq-container">
-        <span class="faq-eyebrow">Support</span>
-        <h1>Frequently Asked Questions</h1>
-        <p>Find quick answers about ordering, delivery, payments, and general site information.</p>
-      </div>
-    </section>
+    <div class="faq-header">
+      <a href="/index.html" class="back-btn">Back to Home</a>
+      <h1>Frequently Asked Questions</h1>
+      <p>Find answers to common questions about orders, delivery, and research products.</p>
+    </div>
 
-    <section class="faq-section">
-      <div class="faq-container">
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span>How long does delivery take?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Delivery times depend on your location and selected shipping option. Full details are shown at checkout.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span>How can I track my order?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>If tracking is available for your order, you will receive tracking details after dispatch.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span>What payment methods do you accept?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Accepted payment methods are shown during checkout.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span>How do I contact support?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>You can contact support using the contact page or the support widget on the site.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span>Where can I view lab results?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>You can view available lab results from the Lab Test Results page.</p>
-            </div>
-          </div>
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          What are your products intended for?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p>All products supplied via this website are intended strictly for laboratory research purposes only. They are not intended for human or animal use.</p>
         </div>
       </div>
-    </section>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          Do you offer UK shipping?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes, we offer UK shipping. Delivery times and dispatch details are shown during checkout where applicable.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          How can I contact support?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p>You can use the Get Support button on the website or contact us by email at support@peptide-plug.co.uk.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          Can I return products?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Please contact support for help with any order issue. Return and refund handling depends on the order status and the nature of the issue.</p>
+        </div>
+      </div>
+    </div>
   </main>
 
   <div id="siteFooter"></div>
 
-  <script src="components.js"></script>
+  <div id="supportWidget">
+    <button id="supportToggle" type="button">Get Support</button>
+
+    <div id="supportPanel">
+      <button id="supportClose" type="button" aria-label="Close support panel">×</button>
+      <h3>Need help?</h3>
+
+      <form id="supportForm">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" placeholder="What would you like help with?" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+
+      <p id="supportStatus"></p>
+    </div>
+  </div>
+
+  <script src="/js/site-config.js"></script>
+  <script src="/js/products.js"></script>
+  <script src="/js/components.js"></script>
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const questions = document.querySelectorAll(".faq-question");
+      const faqQuestions = document.querySelectorAll(".faq-question");
 
-      questions.forEach(question => {
-        question.addEventListener("click", () => {
-          const item = question.parentElement;
-          item.classList.toggle("active");
+      faqQuestions.forEach(button => {
+        button.addEventListener("click", () => {
+          const item = button.parentElement;
+          item.classList.toggle("open");
+
+          const icon = button.querySelector("span");
+          icon.textContent = item.classList.contains("open") ? "−" : "+";
         });
       });
     });

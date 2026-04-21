@@ -196,7 +196,7 @@ footerTarget.innerHTML = `
         </p>
 
         <div class="footer-contact-block">
-          <p><strong>Email Address</strong><br>support@peptideplug.co.uk</p>
+          <p><strong>Email Address</strong><br>support@peptide-plug.co.uk</p>
         </div>
       </div>
 
@@ -211,12 +211,17 @@ footerTarget.innerHTML = `
       <div class="footer-column">
         <h4>Customer Service</h4>
         <ul>
+          <li><a href="/support.html">Support</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
         </ul>
       </div>
 
       <div class="footer-column">
         <h4>Research Categories</h4>
         <ul>
+          <li><a href="/shop/">Peptides</a></li>
+          <li><a href="/shop/">Bundles</a></li>
+          <li><a href="/shop/">Lab Supplies</a></li>
         </ul>
       </div>
     </div>

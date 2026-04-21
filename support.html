@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support | Peptide Plug</title>
+  <link rel="icon" type="image/png" href="/assets/images/pepbanner.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <section class="banner-wrap">
+    <img src="/assets/images/pepbanner.png" alt="Peptide Plug Banner" class="top-banner">
+  </section>
+
+  <section class="category-nav-wrap">
+    <nav class="category-nav" id="categoryNav"></nav>
+  </section>
+
+  <section class="hero hero-home fade-in active support-hero">
+    <div class="hero-content hero-content-centered">
+      <span class="eyebrow">Customer Support</span>
+      <h1>Get in touch with Peptide Plug</h1>
+      <p>
+        Need help with an order, product question, or general enquiry? Use the form below
+        and our team will get back to you as soon as possible.
+      </p>
+    </div>
+  </section>
+
+  <main class="support-page">
+    <section class="support-layout fade-in active">
+      <div class="support-info-card">
+        <span class="section-label">Contact Information</span>
+        <h2>We are here to help</h2>
+        <p>
+          For order support, product queries, or website issues, send us a message using the
+          contact form. Please include as much detail as possible so we can assist you faster.
+        </p>
+
+        <div class="support-info-list">
+          <div class="support-info-item">
+            <h3>Email</h3>
+            <p><a href="mailto:support@peptide-plug.co.uk">support@peptide-plug.co.uk</a></p>
+          </div>
+
+          <div class="support-info-item">
+            <h3>Response Time</h3>
+            <p>Most enquiries are answered within 24 to 48 hours.</p>
+          </div>
+
+          <div class="support-info-item">
+            <h3>Need quick answers?</h3>
+            <p>Check our <a href="/faq.html">FAQ page</a> for common questions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="support-form-card">
+        <span class="section-label">Send a Message</span>
+        <h2>Contact form</h2>
+
+        <form class="support-form" action="support.php" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="What do you need help with?" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="7" placeholder="Write your message here..." required></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn">Submit Request</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="support-extra fade-in active">
+      <div class="support-extra-card">
+        <span class="section-label">Before You Contact Us</span>
+        <h2>Helpful information</h2>
+        <ul class="support-checklist">
+          <li>Include your order number if your message is about an existing order.</li>
+          <li>Double check that your email address is entered correctly.</li>
+          <li>For common site and order questions, view our <a href="/faq.html">FAQ page</a>.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div id="footerTarget"></div>
+
+  <script src="/config.js"></script>
+  <script src="/components/nav.js"></script>
+  <script src="/components/footer.js"></script>
+</body>
+</html>

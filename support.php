@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -26,8 +28,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$botToken = 'YOUR_BOT_TOKEN';
-$chatId = 'YOUR_CHAT_ID';
+$botToken = '8737764645:AAEyPfx3zbhTUVfzGDSvSPE9mRqn4giG0_0';
+$chatId = '-1003946516905';
 
 $text = "New support request\n\n"
       . "Name: {$name}\n"
@@ -44,9 +46,10 @@ $data = [
 
 $options = [
     'http' => [
-        'header'  => "Content-Type: application/json\r\n",
-        'method'  => 'POST',
-        'content' => json_encode($data)
+        'header' => "Content-Type: application/json\r\n",
+        'method' => 'POST',
+        'content' => json_encode($data),
+        'ignore_errors' => true
     ]
 ];
 
@@ -55,7 +58,18 @@ $result = file_get_contents($url, false, $context);
 
 if ($result === false) {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Failed to send message']);
+    echo json_encode(['success' => false, 'message' => 'Failed to contact Telegram']);
+    exit;
+}
+
+$responseData = json_decode($result, true);
+
+if (!$responseData || empty($responseData['ok'])) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => $responseData['description'] ?? 'Telegram API error'
+    ]);
     exit;
 }
 
