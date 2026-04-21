@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll(".add-to-basket-btn");
 
     buttons.forEach(button => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", event => {
         const slug = button.getAttribute("data-slug");
         const product = window.PRODUCTS.find(item => item.slug === slug);
 
@@ -72,6 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (window.PP_CART && typeof window.PP_CART.addToBasket === "function") {
           window.PP_CART.addToBasket(basketProduct, 1);
+
+          if (typeof window.animateProductToBasket === "function") {
+            window.animateProductToBasket(event.currentTarget, basketProduct.image);
+          }
 
           const originalText = button.textContent;
           button.textContent = "Added";

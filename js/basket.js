@@ -1,6 +1,57 @@
 const BASKET_STORAGE_KEY = "peptidePlugBasket";
 const FREE_SHIPPING_THRESHOLD = 100;
 
+function animateProductToBasket(startElement, productImageSrc) {
+  const basketLauncher = document.getElementById("basketLauncher");
+  if (!startElement || !basketLauncher) return;
+
+  const startRect = startElement.getBoundingClientRect();
+  const basketRect = basketLauncher.getBoundingClientRect();
+
+  const flyer = document.createElement("img");
+  flyer.src = productImageSrc || "";
+  flyer.alt = "";
+  flyer.className = "basket-fly-animation";
+
+  const startX = startRect.left + startRect.width / 2 - 30;
+  const startY = startRect.top + startRect.height / 2 - 30;
+  const endX = basketRect.left + basketRect.width / 2 - 15;
+  const endY = basketRect.top + basketRect.height / 2 - 15;
+
+  flyer.style.left = `${startX}px`;
+  flyer.style.top = `${startY}px`;
+  flyer.style.width = "60px";
+  flyer.style.height = "60px";
+  flyer.style.opacity = "1";
+  flyer.style.transform = "scale(1)";
+  flyer.style.position = "fixed";
+  flyer.style.zIndex = "9999";
+  flyer.style.pointerEvents = "none";
+  flyer.style.borderRadius = "50%";
+  flyer.style.objectFit = "cover";
+  flyer.style.boxShadow = "0 10px 30px rgba(0, 0, 0, 0.25)";
+  flyer.style.transition = "transform 1s ease, left 1s ease, top 1s ease, width 1s ease, height 1s ease, opacity 1s ease";
+  document.body.appendChild(flyer);
+
+  requestAnimationFrame(() => {
+    flyer.style.left = `${endX}px`;
+    flyer.style.top = `${endY}px`;
+    flyer.style.width = "30px";
+    flyer.style.height = "30px";
+    flyer.style.opacity = "0.2";
+    flyer.style.transform = "scale(0.5)";
+  });
+
+  setTimeout(() => {
+    flyer.remove();
+
+    basketLauncher.classList.add("basket-bump");
+    setTimeout(() => {
+      basketLauncher.classList.remove("basket-bump");
+    }, 250);
+  }, 1000);
+}
+
 function isProductOutOfStock(product) {
   if (!product) return true;
 
@@ -326,6 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.openBasketDrawer = openBasketDrawer;
 window.closeBasketDrawer = closeBasketDrawer;
+window.animateProductToBasket = animateProductToBasket;
 
 window.PP_CART = {
   getBasket,

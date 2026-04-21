@@ -40,14 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const categoryOrder = [
-    { key: "peptides", label: "Peptides", dropdown: true },
-    { key: "bundles", label: "Bundles & Blends", dropdown: true },
-    { key: "lab-supplies", label: "Lab Supplies", dropdown: true }
+    { key: "peptides", label: "Peptides", page: "/shop/peptides.html" },
+    { key: "bundles", label: "Bundles & Blends", page: "/shop/bundles.html" },
+    { key: "lab-supplies", label: "Lab Supplies", page: "/shop/lab-supplies.html" }
   ];
 
-  const faqLink = window.location.pathname.toLowerCase().includes("/shop/")
-    ? "../faq.html"
-    : "/faq.html";
+  const isShopPage = window.location.pathname.toLowerCase().includes("/shop/");
+  const faqLink = isShopPage ? "../faq.html" : "/faq.html";
 
   const productCategories = {};
 
@@ -70,35 +69,37 @@ document.addEventListener("DOMContentLoaded", () => {
   categoryOrder.forEach(category => {
     const items = productCategories[category.key] || [];
 
-    if (category.dropdown) {
-      const dropdownItems = items
-        .sort((a, b) => a.name.localeCompare(b.name))
-        .map(product => `<a href="${getProductLink(product.slug)}">${product.name}</a>`)
-        .join("");
+    const pageLink = isShopPage
+      ? category.page.replace("/shop/", "./")
+      : category.page;
 
-      navHTML += `
+    const dropdownItems = items
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(product => `<a href="${getProductLink(product.slug)}">${product.name}</a>`)
+      .join("");
+
+    navHTML += `
       <div class="dropdown">
-        <button class="dropdown-btn" type="button">
-          ${category.label}
-          <span class="arrow">▾</span>
-        </button>
+        <div class="dropdown-top">
+          <a href="${pageLink}" class="dropdown-link">${category.label}</a>
+          <button class="dropdown-btn" type="button" aria-label="Open ${category.label} menu">
+            <span class="arrow">▾</span>
+          </button>
+        </div>
         <div class="dropdown-menu">
           ${dropdownItems || `<span class="dropdown-empty">No products yet</span>`}
         </div>
       </div>
     `;
-    } else {
-      navHTML += `<a href="${getShopLink(category.key)}">${category.label}</a>`;
-    }
   });
 
   navHTML += `<a href="${faqLink}">FAQ</a>`;
 
   navHTML += `
-  <div class="nav-action-buttons">
-    <button class="nav-support-btn" type="button" id="navSupportBtn">Get Support</button>
-  </div>
-`;
+    <div class="nav-action-buttons">
+      <button class="nav-support-btn" type="button" id="navSupportBtn">Get Support</button>
+    </div>
+  `;
 
   categoryNav.innerHTML = navHTML;
 
@@ -110,6 +111,34 @@ document.addEventListener("DOMContentLoaded", () => {
       supportPanel.classList.add("open");
     });
   }
+
+  const dropdownButtons = categoryNav.querySelectorAll(".dropdown-btn");
+
+  dropdownButtons.forEach(button => {
+    button.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const dropdown = button.closest(".dropdown");
+      if (!dropdown) return;
+
+      categoryNav.querySelectorAll(".dropdown.open").forEach(openDropdown => {
+        if (openDropdown !== dropdown) {
+          openDropdown.classList.remove("open");
+        }
+      });
+
+      dropdown.classList.toggle("open");
+    });
+  });
+
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".dropdown")) {
+      categoryNav.querySelectorAll(".dropdown.open").forEach(dropdown => {
+        dropdown.classList.remove("open");
+      });
+    }
+  });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -185,64 +214,63 @@ function renderFooter() {
   const footerTarget = document.getElementById("siteFooter");
   if (!footerTarget) return;
 
-footerTarget.innerHTML = `
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-column footer-brand">
-        <h3>Peptide Plug</h3>
-        <p>
-          Products supplied via this website are intended strictly for laboratory
-          research purposes only. They are not intended for human or animal use.
-        </p>
+  footerTarget.innerHTML = `
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-column footer-brand">
+          <h3>Peptide Plug</h3>
+          <p>
+            Products supplied via this website are intended strictly for laboratory
+            research purposes only. They are not intended for human or animal use.
+          </p>
 
-        <div class="footer-contact-block">
-          <p><strong>Email Address</strong><br>support@peptide-plug.co.uk</p>
+          <div class="footer-contact-block">
+            <p><strong>Email Address</strong><br>support@peptide-plug.co.uk</p>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>About Peptide Plug</h4>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/shop/">Shop</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Customer Service</h4>
+          <ul>
+            <li><a href="/support.html">Support</a></li>
+            <li><a href="/faq.html">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Research Categories</h4>
+          <ul>
+            <li><a href="/shop/peptides.html">Peptides</a></li>
+            <li><a href="/shop/bundles.html">Bundles</a></li>
+            <li><a href="/shop/lab-supplies.html">Lab Supplies</a></li>
+          </ul>
         </div>
       </div>
 
-      <div class="footer-column">
-        <h4>About Peptide Plug</h4>
-        <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/shop/">Shop</a></li>
-        </ul>
+      <div class="footer-disclaimer">
+        <p>
+          Disclaimer: The information provided on this website is for general informational
+          and research reference purposes only. Nothing contained on this website constitutes,
+          or should be interpreted as, medical advice, healthcare advice, diagnosis, treatment,
+          or any representation regarding the safety or suitability of any product for personal use.
+          All products listed are supplied strictly for laboratory research purposes only and are
+          not intended for human consumption, veterinary use, therapeutic use, diagnostic use,
+          or administration of any kind. By accessing this website and purchasing from it, you
+          accept full responsibility for ensuring that your use of the website, and any products
+          obtained through it, complies with all applicable laws, regulations, and restrictions
+          in your jurisdiction.
+        </p>
       </div>
-
-      <div class="footer-column">
-        <h4>Customer Service</h4>
-        <ul>
-          <li><a href="/support.html">Support</a></li>
-          <li><a href="/faq.html">FAQ</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-column">
-        <h4>Research Categories</h4>
-        <ul>
-          <li><a href="/shop/">Peptides</a></li>
-          <li><a href="/shop/">Bundles</a></li>
-          <li><a href="/shop/">Lab Supplies</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-disclaimer">
-      <p>
-        Disclaimer: The information provided on this website is for general informational
-        and research reference purposes only. Nothing contained on this website constitutes,
-        or should be interpreted as, medical advice, healthcare advice, diagnosis, treatment,
-        or any representation regarding the safety or suitability of any product for personal use.
-        All products listed are supplied strictly for laboratory research purposes only and are
-        not intended for human consumption, veterinary use, therapeutic use, diagnostic use,
-        or administration of any kind. By accessing this website and purchasing from it, you
-        accept full responsibility for ensuring that your use of the website, and any products
-        obtained through it, complies with all applicable laws, regulations, and restrictions
-        in your jurisdiction.
-      </p>
-    </div>
-  </footer>
-`;
-
+    </footer>
+  `;
 }
 
 document.addEventListener("DOMContentLoaded", () => {

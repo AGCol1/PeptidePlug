@@ -71,7 +71,7 @@ function renderProductImageSection(product) {
   if (images.length <= 1) {
     return `
       <div class="product-image-wrap">
-        <img src="${images[0]}" alt="${product.name}">
+        <img src="${images[0]}" alt="${product.name}" id="productMainStaticImage">
       </div>
     `;
   }
@@ -162,7 +162,7 @@ function setupProductActions(product) {
   const buyNowBtn = document.getElementById("buyNowBtn");
 
   if (addToBasketBtn) {
-    addToBasketBtn.addEventListener("click", () => {
+    addToBasketBtn.addEventListener("click", event => {
       const selectedVariant = getSelectedVariant(product);
 
       const basketProduct = {
@@ -173,6 +173,16 @@ function setupProductActions(product) {
       };
 
       window.PP_CART.addToBasket(basketProduct, 1);
+
+      if (typeof window.animateProductToBasket === "function") {
+        const imageTarget =
+          document.getElementById("productMainImage") ||
+          document.getElementById("productMainStaticImage") ||
+          event.currentTarget;
+
+        window.animateProductToBasket(imageTarget, basketProduct.image);
+      }
+
       addToBasketBtn.textContent = "Added to Basket";
 
       setTimeout(() => {

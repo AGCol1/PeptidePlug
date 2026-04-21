@@ -3,28 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop | Peptide Plug</title>
+  <title>Blends | Peptide Plug</title>
   <link rel="icon" type="image/png" href="../assets/images/pepbanner.png">
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
   <section class="banner-wrap">
-    <img src="../assets/images/pepbanner.png" alt="Peptide Plug Banner" class="top-banner" id="topBanner">
+    <img src="../assets/images/pepbanner.png" alt="Peptide Plug Banner" class="top-banner">
   </section>
 
   <section class="category-nav-wrap">
     <nav class="category-nav" id="categoryNav"></nav>
   </section>
 
-  <section class="hero small fade-in shop-hero">
-    <div class="hero-text shop-hero-text">
-      <h2>Shop Peptides</h2>
-      <p>Browse our premium research peptide range</p>
+  <section class="hero hero-home fade-in active category-hero-left">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="eyebrow">Research Collection</span>
+        <h1>Lab Supplies</h1>
+        <p>Browse lab supplies.</p>
+      </div>
     </div>
   </section>
 
-  <section class="product-grid" id="productGrid"></section>
+  <section class="products-section">
+    <div class="product-grid" id="categoryProductGrid"></div>
+  </section>
+
+  <footer>
+    <p>© 2026 Peptide Plug</p>
+  </footer>
+
+  <script src="../js/site-config.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="../js/basket.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/shop.js"></script>
+  <script src="../script.js"></script>
+  <script src="../js/category-page.js"></script>
 
   <div id="supportWidget">
     <button id="supportToggle" aria-label="Open support form">Get Support</button>
@@ -34,9 +51,11 @@
 
       <form id="supportForm">
         <h3>Need help?</h3>
+
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
         <textarea name="message" placeholder="What would you like help with?" required></textarea>
+
         <button type="submit">Send</button>
         <p id="supportStatus"></p>
       </form>
@@ -44,12 +63,5 @@
   </div>
 
   <div id="siteFooter"></div>
-
-  <script src="../js/site-config.js"></script>
-  <script src="../js/products.js"></script>
-  <script src="../js/basket.js"></script>
-  <script src="../js/components.js"></script>
-  <script src="../js/shop.js"></script>
-  <script src="../script.js"></script>
 </body>
 </html>
