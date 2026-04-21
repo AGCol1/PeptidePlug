@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <h3>${product.name}</h3>
         <p>${product.price}</p>
         <div class="buttons">
-          <a href="../product.html?slug=${product.slug}" class="btn">View Product</a>
+          <a href="../shop/product.html?slug=${product.slug}" class="btn">View Product</a>
           <button type="button" class="btn secondary add-to-basket-btn" data-slug="${product.slug}">
             Add to Basket
           </button>
