@@ -100,11 +100,11 @@ window.PRODUCTS = [
     availability: "In Stock"
   },
   {
-    slug: "retatrutide-10mg",
-    name: "Retatrutide (GLP-3) 10mg",
+    slug: "The Peptide Plug Hard R-10mg",
+    name: "The Peptide Plug Hard R (GLP-3) 10mg",
     price: "£70.00",
     tag: "Best Seller",
-    image: "../assets/images/retatrutide-10mg.png",
+    image: "../assets/images/The Peptide Plug Hard R.png",
     variantId: "53731317973319",
     description: `
   <p><strong>GLP-3 RT</strong> is a synthetic investigational peptide developed exclusively for laboratory research applications. It is currently explored in controlled, preclinical environments for its relevance to metabolic signalling systems and glucose-related pathways.</p>
