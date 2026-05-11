@@ -26,7 +26,58 @@ function handleScroll() {
       el.style.transform = 'translateY(0)';
     }
   });
+
+  // Scroll-triggered visibility for banner, basket, and support
+  handleScrollVisibility();
+}
+
+function handleScrollVisibility() {
+  const topBanner = document.getElementById('topBanner');
+  const bannerWrap = document.querySelector('.banner-wrap');
+  const announcementBar = document.querySelector('.announcement-bar');
+  const basketLauncher = document.querySelector('.basket-launcher');
+  const supportWidget = document.getElementById('supportWidget');
+  
+  let scrollThreshold = 150;
+  
+  // On mobile, use smaller threshold
+  if (window.innerWidth < 768) {
+    scrollThreshold = 100;
+  }
+  
+  if (window.scrollY > scrollThreshold) {
+    // Hide elements when scrolling down
+    if (topBanner && bannerWrap) {
+      topBanner.classList.add('fade-out');
+      bannerWrap.classList.add('fade-out');
+    }
+    if (announcementBar) {
+      announcementBar.classList.add('fade-out');
+    }
+    if (basketLauncher) {
+      basketLauncher.classList.add('fade-out');
+    }
+    if (supportWidget) {
+      supportWidget.classList.add('fade-out');
+    }
+  } else {
+    // Show elements when at top
+    if (topBanner && bannerWrap) {
+      topBanner.classList.remove('fade-out');
+      bannerWrap.classList.remove('fade-out');
+    }
+    if (announcementBar) {
+      announcementBar.classList.remove('fade-out');
+    }
+    if (basketLauncher) {
+      basketLauncher.classList.remove('fade-out');
+    }
+    if (supportWidget) {
+      supportWidget.classList.remove('fade-out');
+    }
+  }
 }
 
 window.addEventListener('scroll', handleScroll);
 window.addEventListener('load', handleScroll);
+window.addEventListener('resize', handleScroll);
