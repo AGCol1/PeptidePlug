@@ -1,4 +1,5 @@
 const faders = document.querySelectorAll('.fade-in');
+let scrollTimeout;
 
 function handleScroll() {
   const triggerBottom = window.innerHeight * 0.85;
@@ -45,7 +46,9 @@ function handleScrollVisibility() {
     scrollThreshold = 100;
   }
   
-  if (window.scrollY > scrollThreshold) {
+  const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  
+  if (scrollPos > scrollThreshold) {
     // Hide elements when scrolling down
     if (topBanner && bannerWrap) {
       topBanner.classList.add('fade-out');
@@ -78,6 +81,8 @@ function handleScrollVisibility() {
   }
 }
 
-window.addEventListener('scroll', handleScroll);
+// Use passive event listener for better mobile performance
+window.addEventListener('scroll', handleScroll, { passive: true });
+window.addEventListener('touchmove', handleScroll, { passive: true });
 window.addEventListener('load', handleScroll);
 window.addEventListener('resize', handleScroll);
