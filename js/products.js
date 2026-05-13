@@ -2,7 +2,7 @@ window.PRODUCTS = [
   {
     slug: "ghk-cu-100mg",
     name: "GHK-Cu 100mg",
-    price: "£45.99",
+    price: "£65",
     image: "../assets/images/ghk-cu-100mg.png",
     tag: "Popular",
     variantId: "53731327246663",
@@ -54,7 +54,7 @@ window.PRODUCTS = [
   {
     slug: "mt2-10mg",
     name: "MT-2 10mg",
-    price: "£24.99",
+    price: "£35.00",
     tag: "New",
     image: "../assets/images/mt2-10mg.png",
     variantId: "53714091147591",
@@ -102,7 +102,7 @@ window.PRODUCTS = [
   {
     slug: "The Peptide Plug Hard R-10mg",
     name: "The Peptide Plug Hard R (GLP-3) 10mg",
-    price: "£70.00",
+    price: "£90.00",
     tag: "Best Seller",
     image: "../assets/images/The Peptide Plug Hard R.png",
     variantId: "53731317973319",
@@ -151,7 +151,7 @@ window.PRODUCTS = [
   {
     slug: "ghk-cu-50mg",
     name: "GHK-Cu 50mg",
-    price: "£24.99",
+    price: "£40",
     image: "../assets/images/ghk-cu-50mg.png",
     variantId: "53691250901319",
     description: `
@@ -202,7 +202,7 @@ window.PRODUCTS = [
   {
     slug: "cjc-1295-dac",
     name: "CJC-1295 incl. DAC 5mg",
-    price: "£40.00",
+    price: "£50.00",
     image: "../assets/images/cjc-1295-dac.png",
     variantId: "53731334422855",
     description: `
@@ -253,7 +253,7 @@ window.PRODUCTS = [
   {
     slug: 'cjc-1295-without',
     name: "CJC-1295 w/o DAC 5mg",
-    price: "£26.99",
+    price: "£40.00",
     image: "../assets/images/cjc-1295-without.png",
     variantId: "53734502957383",
     description: `
@@ -321,12 +321,12 @@ window.PRODUCTS = [
       {
         label: "10ml Bac Water",
         variantId: "53728753320263",
-        price: "£35.00"
+        price: "£7.99"
       },
       {
         label: "3ml Bac Water",
         variantId: "53728753254727",
-        price: "£35.00"
+        price: "£5.00"
       }
     ],
     description: `
@@ -431,7 +431,7 @@ window.PRODUCTS = [
   {
     slug: "needles-100-pack",
     name: "100 BD Micro-fine 0.3ml,8mm Needles",
-    price: "£12.50",
+    price: "£20.00",
     image: "../assets/images/needles-100-pack.png",
     variantId: "53731300311367",
     description: `
