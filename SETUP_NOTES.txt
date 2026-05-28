@@ -1,0 +1,21 @@
+PEPTIDE PLUG VPS PREP
+
+NEXT STEPS AFTER VPS PURCHASE
+
+1. Install Ubuntu 24.04
+2. Install Apache
+3. Install PHP 8.2+
+4. Install MySQL
+5. Clone GitHub repo
+6. Copy .env.example to .env
+7. Fill in real secrets
+8. Import database/schema.sql
+9. Configure SSL
+10. Connect domain
+11. Test support form
+12. Integrate Revolut
+
+EMAILS PLANNED
+- support@peptide-plug.co.uk
+- purchase@peptide-plug.co.uk
+- rich@peptide-plug.co.uk

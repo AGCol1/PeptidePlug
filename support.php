@@ -1,11 +1,20 @@
 <?php
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
 header('Content-Type: application/json');
+
+require __DIR__ . '/includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Method not allowed'
+    ]);
+
     exit;
 }
 
@@ -17,19 +26,43 @@ $message = trim($input['message'] ?? '');
 $page = trim($input['page'] ?? '');
 
 if ($name === '' || $email === '' || $message === '') {
+
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Missing required fields']);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Missing required fields'
+    ]);
+
     exit;
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Invalid email address']);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Invalid email address'
+    ]);
+
     exit;
 }
 
-$botToken = '8737764645:AAEyPfx3zbhTUVfzGDSvSPE9mRqn4giG0_0';
-$chatId = '-1003946516905';
+$botToken = $_ENV['TELEGRAM_BOT_TOKEN'] ?? '';
+$chatId = $_ENV['TELEGRAM_CHAT_ID'] ?? '';
+
+if (!$botToken || !$chatId) {
+
+    http_response_code(500);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Server configuration error'
+    ]);
+
+    exit;
+}
 
 $text = "New support request\n\n"
       . "Name: {$name}\n"
@@ -46,31 +79,28 @@ $data = [
 
 $options = [
     'http' => [
-        'header' => "Content-Type: application/json\r\n",
+        'header' => "Content-type: application/x-www-form-urlencoded\r\n",
         'method' => 'POST',
-        'content' => json_encode($data),
-        'ignore_errors' => true
+        'content' => http_build_query($data),
     ]
 ];
 
 $context = stream_context_create($options);
+
 $result = file_get_contents($url, false, $context);
 
-if ($result === false) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Failed to contact Telegram']);
-    exit;
-}
+if ($result === FALSE) {
 
-$responseData = json_decode($result, true);
-
-if (!$responseData || empty($responseData['ok'])) {
     http_response_code(500);
+
     echo json_encode([
         'success' => false,
-        'message' => $responseData['description'] ?? 'Telegram API error'
+        'message' => 'Failed to send message'
     ]);
+
     exit;
 }
 
-echo json_encode(['success' => true, 'message' => 'Support request sent']);
+echo json_encode([
+    'success' => true
+]);
