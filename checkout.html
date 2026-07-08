@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Peptide Plug</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="checkout-page">
+    <header class="checkout-header">
+      <h1>Checkout</h1>
+      <p>Complete your details below to place your order.</p>
+    </header>
+
+    <div class="checkout-grid">
+      <section class="checkout-form">
+        <h2>Shipping & Contact</h2>
+
+        <form id="checkoutForm">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" name="full_name" type="text" required>
+
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" required>
+
+          <label for="addressLine1">Address Line 1</label>
+          <input id="addressLine1" name="address_line_1" type="text" required>
+
+          <label for="addressLine2">Address Line 2</label>
+          <input id="addressLine2" name="address_line_2" type="text">
+
+          <label for="city">City</label>
+          <input id="city" name="city" type="text" required>
+
+          <label for="postcode">Postcode</label>
+          <input id="postcode" name="postcode" type="text" required>
+
+          <label for="country">Country</label>
+          <input id="country" name="country" type="text" required>
+
+          <label for="shippingInstructions">Shipping Notes</label>
+          <textarea id="shippingInstructions" name="shipping_instructions" placeholder="Additional delivery instructions"></textarea>
+
+          <button id="placeOrderBtn" class="btn" type="submit">Place Order</button>
+          <span id="checkoutStatus" class="form-status"></span>
+        </form>
+      </section>
+
+      <aside class="checkout-summary">
+        <h2>Order Summary</h2>
+        <div id="orderItemsContainer"></div>
+        <div class="order-total">
+          <span>Total</span>
+          <strong id="orderTotal">£0.00</strong>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="/js/basket.js"></script>
+  <script src="/js/checkout.js"></script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 const BASKET_STORAGE_KEY = "peptidePlugBasket";
+const CHECKOUT_ITEM_STORAGE_KEY = "peptidePlugCheckoutItem";
 const FREE_SHIPPING_THRESHOLD = 100;
 
 function animateProductToBasket(startElement, productImageSrc) {
@@ -54,9 +55,13 @@ function animateProductToBasket(startElement, productImageSrc) {
 
 function isProductOutOfStock(product) {
   if (!product) return true;
+  // consider product out of stock if active flag is falsy (0, false, '0')
+  if (typeof product.active !== 'undefined') {
+    return !(product.active == 1 || product.active === true || product.active === '1');
+  }
 
+  // fallback to legacy availability string
   const value = product.availability;
-
   return (
     value === false ||
     value === "false" ||
@@ -68,10 +73,35 @@ function isProductOutOfStock(product) {
 function getBasket() {
   try {
     const basket = JSON.parse(localStorage.getItem(BASKET_STORAGE_KEY));
-    return Array.isArray(basket) ? basket : [];
+    if (!Array.isArray(basket)) return [];
+
+    return basket.map(item => {
+      const normalizedVariantId = item.variantId ?? item.variant_id ?? item.product_id ?? item.slug ?? '';
+      return {
+        ...item,
+        variantId: String(normalizedVariantId)
+      };
+    });
   } catch (error) {
     return [];
   }
+}
+
+function getCheckoutItem() {
+  try {
+    const item = JSON.parse(localStorage.getItem(CHECKOUT_ITEM_STORAGE_KEY));
+    return item && typeof item === "object" ? item : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function setCheckoutItem(item) {
+  localStorage.setItem(CHECKOUT_ITEM_STORAGE_KEY, JSON.stringify(item));
+}
+
+function clearCheckoutItem() {
+  localStorage.removeItem(CHECKOUT_ITEM_STORAGE_KEY);
 }
 
 function saveBasket(basket) {
@@ -84,16 +114,18 @@ function addToBasket(product, qty = 1) {
   if (!product || !product.variantId || isProductOutOfStock(product)) return;
 
   const basket = getBasket();
-  const existingItem = basket.find(item => item.variantId === product.variantId);
+  const existingItem = basket.find(item => String(item.variantId) === String(product.variantId));
+
+  const numericPrice = Number(String(product.price).replace(/[^0-9.\-]/g, '')) || 0;
 
   if (existingItem) {
     existingItem.qty += qty;
   } else {
     basket.push({
-      variantId: product.variantId,
-      slug: product.slug,
+      product_id: product.product_id || product.id || null,
+      variantId: String(product.variantId),
       name: product.name,
-      price: product.price,
+      price: numericPrice,
       image: product.image,
       qty: qty,
       selectedOptionLabel: product.selectedOptionLabel || ""
@@ -104,11 +136,12 @@ function addToBasket(product, qty = 1) {
 }
 
 function updateBasketItemQty(variantId, qty) {
+  const normalizedId = String(variantId);
   let basket = getBasket();
 
   basket = basket
     .map(item => {
-      if (item.variantId === variantId) {
+      if (String(item.variantId) === normalizedId) {
         return { ...item, qty: qty };
       }
       return item;
@@ -119,7 +152,8 @@ function updateBasketItemQty(variantId, qty) {
 }
 
 function removeFromBasket(variantId) {
-  const basket = getBasket().filter(item => item.variantId !== variantId);
+  const normalizedId = String(variantId);
+  const basket = getBasket().filter(item => String(item.variantId) !== normalizedId);
   saveBasket(basket);
 }
 
@@ -159,12 +193,28 @@ function goToBasketCheckout() {
     return;
   }
 
-  window.location.href = buildShopifyCartUrl(basket);
+  clearCheckoutItem();
+  window.location.href = "/checkout.html";
 }
 
 function buyNow(product) {
   if (!product || !product.variantId || isProductOutOfStock(product)) return;
-  window.location.href = buildShopifyCartUrl([{ variantId: product.variantId, qty: 1 }]);
+
+  const numericPrice = Number(String(product.price).replace(/[^0-9.\-]/g, '')) || 0;
+
+  const checkoutItem = {
+    product_id: product.product_id || product.id || null,
+    variantId: product.variantId,
+    slug: product.slug,
+    name: product.name,
+    price: numericPrice,
+    image: product.image,
+    qty: 1,
+    selectedOptionLabel: product.selectedOptionLabel || ""
+  };
+
+  setCheckoutItem(checkoutItem);
+  window.location.href = "/checkout.html?source=single";
 }
 
 function formatPrice(value) {
@@ -181,6 +231,8 @@ function getFreeShippingMessage(total) {
 }
 
 function ensureBasketUI() {
+  const isCheckoutPage = window.location.pathname.endsWith('/checkout.html') || document.querySelector('.checkout-page');
+  if (isCheckoutPage) return;
   if (document.getElementById("basketDrawer")) return;
 
   const basketUI = document.createElement("div");
@@ -316,7 +368,7 @@ function renderBasketDrawer() {
         <div class="basket-item-info">
           <h4>${item.name}</h4>
           ${selectedOptionHTML}
-          <p>${item.price}</p>
+          <p>${formatPrice(Number(item.price) || 0)}</p>
           <div class="basket-item-controls">
             <button type="button" class="basket-qty-btn" data-action="decrease" data-variant-id="${item.variantId}">-</button>
             <span>${item.qty}</span>
@@ -341,7 +393,7 @@ function renderBasketDrawer() {
     button.addEventListener("click", () => {
       const variantId = button.getAttribute("data-variant-id");
       const action = button.getAttribute("data-action");
-      const basketItem = getBasket().find(item => item.variantId === variantId);
+      const basketItem = getBasket().find(item => String(item.variantId) === String(variantId));
 
       if (!basketItem) return;
 
@@ -358,7 +410,7 @@ function renderBasketDrawer() {
   basketItemsWrap.querySelectorAll(".basket-remove-btn").forEach(button => {
     button.addEventListener("click", () => {
       const variantId = button.getAttribute("data-variant-id");
-      removeFromBasket(variantId);
+      removeFromBasket(String(variantId));
     });
   });
 }
@@ -388,5 +440,8 @@ window.PP_CART = {
   goToBasketCheckout,
   buildShopifyCartUrl,
   isProductOutOfStock,
-  getBasketCount
+  getBasketCount,
+  getCheckoutItem,
+  setCheckoutItem,
+  clearCheckoutItem
 };

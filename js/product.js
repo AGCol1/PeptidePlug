@@ -153,7 +153,9 @@ function setupVariantSelector(product) {
 
   variantSelect.addEventListener("change", () => {
     const selectedVariant = getSelectedVariant(product);
-    productPrice.textContent = selectedVariant.price || product.price;
+    productPrice.textContent = typeof (selectedVariant.price || product.price) === 'number'
+      ? `£${(selectedVariant.price || product.price).toFixed(2)}`
+      : (selectedVariant.price || product.price);
   });
 }
 
@@ -229,12 +231,14 @@ function renderProductPage() {
 
   document.title = `${product.name} - Peptide Plug`;
 
+  const formatPrice = v => (typeof v === 'number' ? `£${v.toFixed(2)}` : v);
+
   productPage.innerHTML = `
     ${renderProductImageSection(product)}
 
     <div class="product-info">
       <h1>${product.name}</h1>
-      <p class="product-price" id="productPrice">${defaultVariant ? defaultVariant.price : product.price}</p>
+      <p class="product-price" id="productPrice">${formatPrice(defaultVariant ? defaultVariant.price : product.price)}</p>
 
       ${renderVariantSelector(product)}
 
@@ -272,4 +276,9 @@ function renderProductPage() {
   setupProductActions(product);
 }
 
-document.addEventListener("DOMContentLoaded", renderProductPage);
+document.addEventListener("DOMContentLoaded", async () => {
+  if (typeof window.loadProducts === 'function') {
+    await window.loadProducts();
+  }
+  renderProductPage();
+});

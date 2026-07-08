@@ -28,8 +28,10 @@ function getShopLink(category = "") {
 
 document.addEventListener("DOMContentLoaded", renderAnnouncementBar);
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const categoryNav = document.getElementById("categoryNav");
+
+  if (typeof window.loadProducts === 'function') await window.loadProducts();
 
   if (!categoryNav || !window.PRODUCTS || !Array.isArray(window.PRODUCTS)) {
     return;

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - Peptide Plug</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="order-confirmation-page">
+    <header class="order-confirmation-header">
+      <h1>Order Received</h1>
+      <p>Thank you. Your order has been placed and is waiting payment confirmation.</p>
+    </header>
+
+    <section class="order-confirmation-panel">
+      <div class="bank-card">
+        <h2>Bank Payment Details</h2>
+        <p>Please transfer the amount to the bank account shown below. Use your <strong>Order ID</strong> as the <strong>payment reference</strong>.</p>
+        <div class="bank-details-grid">
+          <div><strong>Account Name:</strong></div>
+          <div>Richard Krmicek</div>
+          <div><strong>Sort Code:</strong></div>
+          <div>23-01-20</div>
+          <div><strong>Account Number:</strong></div>
+          <div>43056709</div>
+        </div>
+      </div>
+
+      <div class="order-details">
+        <p><strong>Order ID:</strong> <span id="orderRef"></span></p>
+        <p><strong>Total Due:</strong> <span id="orderAmount"></span></p>
+        <p><strong>Email:</strong> <span id="orderEmail"></span></p>
+      </div>
+
+      <div class="payment-actions">
+        <button id="confirmPaidBtn" class="btn">I have paid</button>
+        <button id="payLaterBtn" class="btn secondary">I will pay later</button>
+      </div>
+
+      <div id="payLaterInfo" class="pay-later-info">
+        <h3>Pay Later Info</h3>
+        <p>Instructions to be filled in here.</p>
+      </div>
+
+      <span id="orderStatus" class="order-status"></span>
+    </section>
+  </div>
+
+  <script src="/js/basket.js"></script>
+  <script src="/js/order-success.js"></script>
+</body>
+</html>

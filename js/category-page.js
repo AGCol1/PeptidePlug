@@ -1,9 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const productGrid = document.getElementById("categoryProductGrid");
 
   if (!productGrid) {
     console.log("categoryProductGrid not found");
     return;
+  }
+
+  if (typeof window.loadProducts === 'function') {
+    const currentCategory = getCurrentCategory();
+    await window.loadProducts(currentCategory);
   }
 
   if (!window.PRODUCTS || !Array.isArray(window.PRODUCTS)) {
@@ -43,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="product-card-body">
           ${product.tag ? `<span class="product-badge">${product.tag}</span>` : ""}
           <h3>${product.name}</h3>
-          <p>${product.price}</p>
+          <p>${typeof product.price === 'number' ? '£' + product.price.toFixed(2) : product.price}</p>
 
           <div class="buttons">
             <a href="${getProductLink(product.slug)}" class="btn">Buy Now</a>

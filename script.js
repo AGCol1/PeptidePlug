@@ -36,7 +36,6 @@ function handleScrollVisibility() {
   const topBanner = document.getElementById('topBanner');
   const bannerWrap = document.querySelector('.banner-wrap');
   const announcementBar = document.querySelector('.announcement-bar');
-  const basketLauncher = document.querySelector('.basket-launcher');
   const supportWidget = document.getElementById('supportWidget');
   
   let scrollThreshold = 150;
@@ -49,16 +48,13 @@ function handleScrollVisibility() {
   const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
   
   if (scrollPos > scrollThreshold) {
-    // Hide elements when scrolling down
+    // Hide banner and support when scrolling down
     if (topBanner && bannerWrap) {
       topBanner.classList.add('fade-out');
       bannerWrap.classList.add('fade-out');
     }
     if (announcementBar) {
       announcementBar.classList.add('fade-out');
-    }
-    if (basketLauncher) {
-      basketLauncher.classList.add('fade-out');
     }
     if (supportWidget) {
       supportWidget.classList.add('fade-out');
@@ -71,9 +67,6 @@ function handleScrollVisibility() {
     }
     if (announcementBar) {
       announcementBar.classList.remove('fade-out');
-    }
-    if (basketLauncher) {
-      basketLauncher.classList.remove('fade-out');
     }
     if (supportWidget) {
       supportWidget.classList.remove('fade-out');

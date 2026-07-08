@@ -1,0 +1,20 @@
+{
+  "full_name": "Test User",
+  "email": "test@example.com",
+  "address_line_1": "1 Test Street",
+  "address_line_2": "",
+  "city": "Testville",
+  "postcode": "TE57 1NG",
+  "country": "UK",
+  "shipping_instructions": "Leave by door",
+  "amount": 12.00,
+  "items": [
+    {
+      "product_id": 1,
+      "variantId": "var-1",
+      "name": "Test Product",
+      "qty": 1,
+      "price": 12.00
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Peptide Plug</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .login-card { max-width: 420px; margin: 80px auto; padding: 24px; border-radius: 12px; background: #fff; box-shadow: 0 12px 28px rgba(2,6,23,0.08); }
+    .login-card h2 { margin-bottom: 14px }
+    .login-card input { width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 8px; border:1px solid #ddd }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <h2>Admin Login</h2>
+    <form id="loginForm">
+      <input id="username" name="username" placeholder="Username" required>
+      <input id="password" name="password" type="password" placeholder="Password" required>
+      <button class="btn" type="submit">Sign In</button>
+      <p id="loginStatus" class="form-status"></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('loginStatus');
+      status.textContent = '';
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await fetch('/api/admin-login.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const json = await res.json();
+        if (!res.ok) {
+          status.textContent = json.message || 'Login failed';
+          return;
+        }
+
+        window.location.href = '/admin.html';
+      } catch (err) {
+        status.textContent = 'Network error';
+      }
+    });
+  </script>
+</body>
+</html>
